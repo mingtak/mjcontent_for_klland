@@ -78,8 +78,12 @@ class CoverView(BrowserView):
 #    @ram.cache(lambda *args: time() // (120))
     def mainSliders(self):
         context = self.context
-        brain = api.content.find(Type=['News Item', 'Blog', 'Ebook', 'Youtube'], review_state='published', hasOldPicture=True,
-                                featured=True, created=self.date_range, sort_on='headWeight', sort_order='reverse')
+        portal = api.portal.get()
+#        items = context.getChildNodes()
+        brain = portal['resource']['headimage'].restrictedTraverse('@@contentlisting')(portal_type='Image')
+#        brain = api.content.find(Type=['News Item'], review_state='published',
+#                                featured=True, sort_on='headWeight', sort_order='reverse')
+#        import pdb; pdb.set_trace()
         return brain
 
 
@@ -87,6 +91,11 @@ class CoverView(BrowserView):
     def youtubes(self):
         portal = api.portal.get()
         return api.content.find(context=portal, Type='Youtube', featured=True, review_state='published', sort_on='created', sort_order='reverse', sort_limit=LIMIT)[:LIMIT]
+
+
+    def externalAd(self):
+        portal = api.portal.get()
+        return portal['resource']['ad'].restrictedTraverse('@@contentlisting')(Type='Ad', category='external')
 
 
     #@ram.cache(lambda *args: time() // (120))
@@ -99,21 +108,46 @@ class CoverView(BrowserView):
     def tabsNameLists(self):
         portal = api.portal.get()
         context = self.context
-        tabsNameList_1 = context.tabsName.split()[0].encode('utf-8').split(',')
-        tabsNameList_2 = context.tabsName.split()[1].encode('utf-8').split(',')
-        tabsNameList_3 = context.tabsName.split()[1].encode('utf-8').split(',')
+
+        tabsNameList_1 = ['最新消息', '法令新訊'] #, '線上查詢', '線上申辦']
+        tabsNameList_2 = ['不動產經紀 仲介專區', '基隆市實價登錄專區', '徵收案件專區']
+        tabsNameList_3 = ['none']
 
         tabsBrain_1, tabsBrain_2 ,tabsBrain_3 = [], [], []
 
-        for key in tabsNameList_1:
-            brain = api.content.find(context=portal, Type='News Item', Subject=key, sort_on='created', review_state='published', sort_order='reverse', sort_limit=LIMIT)[:LIMIT]
-            tabsBrain_1.append(brain[0:5])
-        for key in tabsNameList_2:
-            brain = api.content.find(context=portal, Type='News Item', Subject=key, sort_on='created', review_state='published', sort_order='reverse', sort_limit=LIMIT)[:LIMIT]
-            tabsBrain_2.append(brain[0:5])
-        for key in tabsNameList_3:
-            brain = api.content.find(context=portal, Type='News Item', Subject=key, sort_on='created', review_state='published', sort_order='reverse', sort_limit=LIMIT)[:LIMIT]
-            tabsBrain_3.append(brain[0:5])
+        # 最新消息
+        brain_news = api.content.find( context=portal['2'], Type='News Item', review_state='published', featured=True,
+            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 法令新訊
+        brain_law = api.content.find( context=portal['3'], Type='Page', review_state='published',
+            sort_on='created', sort_order='reverse', sort_limit=10)[:10]
+
+        # 線上查詢
+#        brain_inquery = api.content.find( context=portal['3'], Type='Page', review_state='published', featured=True,
+#            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 線上申辦
+#        brain_bid = api.content.find( context=portal['4'], Type='Link', review_state='published', featured=True,
+#            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 不動產經紀 仲介專區
+        brain_broker = api.content.find( context=portal['6']['8'], Type='Page', review_state='published',
+            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 基隆市實價登錄專區
+        brain_realprice = api.content.find( context=portal['6']['6'], Type='Page', review_state='published',
+            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 徵收案件專區
+        brain_buy = api.content.find( context=portal['6']['9'], Type='Page', review_state='published',
+            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+
+        # 合併 brain
+        tabsBrain_1 = [brain_news, brain_law] #, brain_inquery, brain_bid]
+        tabsBrain_2 = [brain_broker, brain_realprice, brain_buy]
+        tabsBrain_3 = []
+
         return [tabsNameList_1, tabsBrain_1, tabsNameList_2, tabsBrain_2, tabsNameList_3, tabsBrain_3]
 
 
@@ -171,3 +205,22 @@ class CoverView(BrowserView):
         portal = api.portal.get()
 
         return self.template()
+
+
+class TransState(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+#        import pdb; pdb.set_trace()
+        uid = request.form.get('uid')
+        if not uid:
+            return
+
+        obj = api.content.find(UID=uid)[0].getObject()
+        state = api.content.get_state(obj=obj)
+        if state == 'published':
+            api.content.transition(obj=obj, transition='reject')
+        else:
+            api.content.transition(obj=obj, transition='publish')

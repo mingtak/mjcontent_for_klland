@@ -22,5 +22,14 @@
         editview=".embed.EditForm"
         />
 
+    <plone:portlet
+        name="mingjing.content.portlet.AdListing"
+        interface=".ad.IAd"
+        assignment=".ad.Assignment"
+        renderer=".ad.Renderer"
+        addview=".ad.AddForm"
+        editview=".ad.EditForm"
+        />
+
 </configure>
 

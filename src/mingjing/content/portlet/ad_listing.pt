@@ -1,0 +1,15 @@
+<?python
+from plone import api
+portal = api.portal.get()
+brain = portal['resource']['ad'].restrictedTraverse('@@contentlisting')(Type='Ad', category='related')
+?>
+
+<div class="portlet-ad-listing">
+<h5 class="widget-title">地政相關連結</h5>
+<a  tal:repeat="item brain"
+    href="${python:item.url}" title="${item/title}" target="_blank">
+    <img style="width:45%; margin: 5px 2px" src="${item/getURL}/@@images/image/mini" alt="${item/title}">
+</a>
+
+
+</div>

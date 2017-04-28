@@ -32,15 +32,16 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
-    <element value="mingjing.content.behavior.metadata.IBasic"/>
-    <element value="mingjing.content.behavior.metadata.ICategorization"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+    <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
+    <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
     <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes"/>
     <element value="mingjing.content.behavior.behaviors.INamedFromTimeStamp"/>
   </property>
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++Folder</property>
-  <property name="default_view">listing_view</property>
+  <property name="default_view">tabular_view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>
   <property name="view_methods">

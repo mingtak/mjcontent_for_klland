@@ -32,9 +32,8 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
-    <element value="mingjing.content.behavior.metadata.IBasic"/>
-    <element value="mingjing.content.behavior.behaviors.IKeywords" />
-    <element value="mingjing.content.behavior.metadata.ICategorization"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+    <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
     <element value="plone.app.event.dx.behaviors.IEventBasic"/>
     <element value="plone.app.event.dx.behaviors.IEventRecurrence"/>
     <element value="plone.app.event.dx.behaviors.IEventLocation"/>

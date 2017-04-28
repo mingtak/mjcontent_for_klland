@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="portal_types" meta_type="Plone Types Tool">
-  <object name="Member" meta_type="Dexterity FTI"/>
   <object name="Cover" meta_type="Dexterity FTI"/>
   <object name="Youtube" meta_type="Dexterity FTI"/>
-  <object name="Ebook" meta_type="Dexterity FTI"/>
-  <object name="Blog" meta_type="Dexterity FTI"/>
+  <object name="Ad" meta_type="Dexterity FTI"/>
 </object>

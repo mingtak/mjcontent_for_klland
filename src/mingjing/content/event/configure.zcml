@@ -5,31 +5,34 @@
 
 
     <subscriber
+        for="* zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        handler=".event.moveContentToTop"
+    />
+
+    <subscriber
         for="Products.PlonePAS.events.UserLoggedInEvent"
         handler=".event.userLoginToFolderContents"
     />
 
     <subscriber
-        for="* zope.lifecycleevent.interfaces.IObjectAddedEvent"
-        handler=".event.moveContentToTop"
-    />
-
-
-    <subscriber
-        for="* zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        for="zope.interface.Interface zope.lifecycleevent.interfaces.IObjectAddedEvent"
         handler=".event.toFolderContents"
     />
 
     <subscriber
-        for="* zope.lifecycleevent.interfaces.IObjectAddedEvent"
-        handler=".event.updateDescription"
+        for="zope.interface.Interface plone.dexterity.interfaces.IAddCancelledEvent"
+        handler=".event.addCancelToFolderContents"
     />
 
     <subscriber
-        for="* zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-        handler=".event.updateDescription"
+        for="zope.interface.Interface plone.dexterity.interfaces.IEditCancelledEvent"
+        handler=".event.toFolderContents"
     />
 
+    <subscriber
+        for="zope.interface.Interface plone.dexterity.interfaces.IEditFinishedEvent"
+        handler=".event.toFolderContents"
+    />
 
 </configure>
 

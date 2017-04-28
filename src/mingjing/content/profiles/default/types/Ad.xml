@@ -2,19 +2,19 @@
 <object
     i18n:domain="mingjing.content"
     meta_type="Dexterity FTI"
-    name="Member"
+    name="Ad"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Member</property>
+      name="title">Ad</property>
   <property
       i18n:translate=""
       name="description"></property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Member</property>
+  <property name="factory">Ad</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,16 +30,17 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">mingjing.content.interfaces.IMember</property>
+  <property name="schema">mingjing.content.interfaces.IAd</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
-    <element value="mingjing.content.behavior.metadata.IBasic"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
     <element value="mingjing.content.behavior.behaviors.INamedFromTimeStamp"/>
+    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Member</property>
+  <property name="add_view_expr">string:${folder_url}/++add++Ad</property>
   <property name="immediate_view">view</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>

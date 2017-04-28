@@ -10,17 +10,6 @@ from .. import _
 
 
 class IMJNetSetting(Form.Schema):
-    mysqlSetting = schema.TextLine(
-        title=_(u"Mysql Connection Setting"),
-        description=_(u"host,port,username,password,dbname,charset"),
-        required=True,
-    )
-
-    oldSiteDB = schema.TextLine(
-        title=_(u"Old Site Mysql Connection Setting"),
-        description=_(u"host,port,username,password,dbname,charset"),
-        required=True,
-    )
 
     catDict = schema.Dict(
         title=_(u"Categories Dict"),

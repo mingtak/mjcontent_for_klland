@@ -49,58 +49,5 @@
       permission="zope2.View"
     />
 
-    <browser:viewlet
-      name="view_counter"
-      for="plone.app.contenttypes.interfaces.INewsItem"
-      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-      template="template/view_counter.pt"
-      class=".viewlet.ViewCounter"
-      permission="zope2.View"
-    />
-
-    <browser:viewlet
-      name="hot_hit"
-      for="plone.app.contenttypes.interfaces.INewsItem"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-      template="template/hot_hit.pt"
-      class=".viewlet.HotHit"
-      permission="zope2.View"
-    />
-
-    <browser:viewlet
-      name="hot_hit"
-      for="mingjing.content.interfaces.ICover"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-      template="template/hot_hit.pt"
-      class=".viewlet.HotHit"
-      permission="zope2.View"
-    />
-
-    <browser:viewlet
-      name="hot_hit"
-      for="mingjing.content.interfaces.IBlog"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-      template="template/hot_hit.pt"
-      class=".viewlet.HotHit"
-      permission="zope2.View"
-    />
-
-    <browser:viewlet
-      name="hot_hit"
-      for="mingjing.content.interfaces.IEbook"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-      template="template/hot_hit.pt"
-      class=".viewlet.HotHit"
-      permission="zope2.View"
-    />
-
-    <browser:viewlet
-      name="hot_hit"
-      for="mingjing.content.interfaces.IYoutube"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-      template="template/hot_hit.pt"
-      class=".viewlet.HotHit"
-      permission="zope2.View"
-    />
 
 </configure>

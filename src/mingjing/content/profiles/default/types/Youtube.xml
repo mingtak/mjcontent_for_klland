@@ -35,12 +35,10 @@
   <!-- Enabled behaviors -->
   <property name="behaviors">
     <element value="mingjing.content.behavior.behaviors.INamedFromTimeStamp"/>
-    <element value="mingjing.content.behavior.metadata.IBasic"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
     <element value="mingjing.content.behavior.behaviors.IFeatured" />
-    <element value="mingjing.content.behavior.behaviors.IKeywords" />
     <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
-    <element value="mingjing.content.behavior.behaviors.IOldFields" />
   </property>
 
   <!-- View information -->

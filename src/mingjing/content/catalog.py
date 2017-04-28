@@ -4,11 +4,7 @@ from zope.interface import Interface
 from Products.CMFPlone.utils import safe_unicode
 
 from plone.app.contenttypes.interfaces import INewsItem
-
-
-@indexer(INewsItem)
-def originalUrl_indexer(obj):
-    return obj.originalUrl
+from mingjing.content.interfaces import IAd
 
 
 @indexer(Interface)
@@ -18,26 +14,17 @@ def featured_indexer(obj):
 
 
 @indexer(Interface)
-def shared_indexer(obj):
-    if hasattr(obj, 'shared'):
-        return obj.shared
-
-
-@indexer(Interface)
 def headWeight_indexer(obj):
     if hasattr(obj, 'headWeight'):
         return obj.headWeight
 
 
-@indexer(Interface)
-def keywords_indexer(obj):
-    if hasattr(obj, 'keywords'):
-        keywords = []
-        for item in obj.keywords.split(','):
-            keywords.append(safe_unicode(item))
-        return keywords
+@indexer(IAd)
+def category_indexer(obj):
+    if hasattr(obj, 'category'):
+        return obj.category
 
-
+"""
 @indexer(Interface)
 def hasOldPicture_indexer(obj):
     if getattr(obj, 'oldPicturePath', False):
@@ -45,3 +32,4 @@ def hasOldPicture_indexer(obj):
     else:
         return False
 
+"""
