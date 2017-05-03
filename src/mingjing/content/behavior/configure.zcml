@@ -48,6 +48,12 @@
         factory=".behaviors.OldFields"
         />
 
+    <plone:behavior
+        title="klLandMeta"
+        description="KL land metadata"
+        provides=".behaviors.IKlMeta"
+        factory=".behaviors.KlMeta"
+        />
 
 
 </configure>

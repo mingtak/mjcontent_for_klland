@@ -19,6 +19,31 @@ import random
 from plone.directives import form
 
 
+class IKlMeta(model.Schema):
+    """ Add KL land Metadata field """
+
+    cateL1 = schema.TextLine(
+        title=_(u"Main Category"),
+        required=False,
+    )
+
+    cateL2 = schema.TextLine(
+        title=_(u"Sub Category"),
+        required=False,
+    )
+
+    pubUnit = schema.TextLine(
+        title=_(u"Publish Unit"),
+        required=False,
+    )
+
+#    form.mode(dfilesString='hidden')
+    dfilesString = schema.Text(
+        title=(u"Download file string(href, json string)"),
+        required=False,
+    )
+
+
 class IFeatured(model.Schema):
     """ Add featured field """
 
@@ -99,6 +124,7 @@ alsoProvides(IOriginalUrl, IFormFieldProvider)
 alsoProvides(IOldFields, IFormFieldProvider)
 alsoProvides(IKeywords, IFormFieldProvider)
 alsoProvides(IFeatured, IFormFieldProvider)
+alsoProvides(IKlMeta, IFormFieldProvider)
 
 
 def context_property(name):
@@ -168,6 +194,20 @@ class OriginalUrl(object):
 
     # -*- Your behavior property setters & getters here ... -*-
     originalUrl = context_property("originalUrl")
+
+
+class KlMeta(object):
+    implements(IKlMeta)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    cateL1 = context_property("cateL1")
+    cateL2 = context_property("cateL2")
+    pubUnit = context_property("pubUnit")
+    dfilesString = context_property("dfilesString")
 
 
 class INamedFromTimeStamp(INameFromTitle):
