@@ -1,7 +1,6 @@
 .coverage
 *.egg-info
 *.log
-*.mo
 *.swp
 # dirs
 bin/
