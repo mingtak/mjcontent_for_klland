@@ -116,7 +116,7 @@ class CoverView(BrowserView):
         tabsBrain_1, tabsBrain_2 ,tabsBrain_3 = [], [], []
 
         # 最新消息
-        brain_news = api.content.find( context=portal['2'], Type='News Item', review_state='published', featured=True,
+        brain_news = api.content.find( context=portal['2'], Type='News Item', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
 
         # 法令新訊

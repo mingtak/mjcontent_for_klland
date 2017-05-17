@@ -47,7 +47,7 @@ class IKlMeta(model.Schema):
 class IFeatured(model.Schema):
     """ Add featured field """
 
-#    form.mode(featured='hidden')
+    form.mode(featured='hidden')
     featured = schema.Bool(
         title=_(u"Featured"),
         description=_(u"Checked it for featured."),
