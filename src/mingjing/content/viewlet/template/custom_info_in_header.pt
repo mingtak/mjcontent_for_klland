@@ -8,4 +8,4 @@ portal = api.portal.get()
 <meta property="og:image" content="${portal/absolute_url}/resource/images/logo_gray.png/@@images/image/large"
       tal:condition="python:not getattr(context, 'oldPicturePath', False)"/>
 <meta property="og:url" content="${context/absolute_url}" />
-<meta property="og:description" content="${python:context.description.replace(' ', '').replace('\n', '')}" />
+<meta property="og:description" content="${python:context.title if context.description is None else context.description.replace(' ', '').replace('\n', '')}" />
