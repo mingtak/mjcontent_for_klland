@@ -3,6 +3,13 @@ from plone import api
 import transaction
 
 
+"""
+def editFinished(item, event):
+    item.cateL1 = item.REQUEST.form['cate_l1']
+    item.cateL2 = item.REQUEST.form['cate_l2']
+#    import pdb; pdb.set_trace()
+"""
+
 def toFolderContents(item, event):
     try:
         portal = api.portal.get()

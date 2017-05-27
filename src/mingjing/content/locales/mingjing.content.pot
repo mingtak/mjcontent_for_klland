@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-03-05 06:28+0000\n"
+"POT-Creation-Date: 2017-05-26 15:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,51 @@ msgstr ""
 "Domain: mingjing.content\n"
 
 #: ./profiles/default/portlets.xml
+msgid "A portlet to rendering Ad Listing."
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "A portlet to rendering EmbedHTML."
+msgstr ""
+
+#: ./profiles/default/portlets.xml
 msgid "A portlet to rendering Tabs contents."
+msgstr ""
+
+#: ./profiles/default/types/Ad.xml
+msgid "Ad"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "Ad Listing portlet"
+msgstr ""
+
+#: ./portlet/ad.py:33
+msgid "Add Ad Listing Portlet"
+msgstr ""
+
+#: ./portlet/embed.py:51
+msgid "Add EmbedHTML Portlet"
 msgstr ""
 
 #: ./portlet/tabs.py:53
 msgid "Add Tabs Portlet"
 msgstr ""
 
-#: ./behavior/configure.zcml:60
-msgid "Adds keywords(without language) fields."
+#: ./browser/mjnetSetting.py:15
+msgid "Categories Dict"
 msgstr ""
 
-#: ./behavior/configure.zcml:70
-msgid "Adds title and description fields."
+#: ./interfaces.py:52
+msgid "Category"
 msgstr ""
 
-#: ./behavior/configure.zcml:70
-msgid "Basic metadata"
+#: ./behavior/behaviors.py:27
+#: ./behavior/configure.zcml:63
+msgid "Category Table"
 msgstr ""
 
-#: ./profiles/default/types/Blog.xml
-msgid "Blog"
-msgstr ""
-
-#: ./behavior/configure.zcml:60
-msgid "Categorization"
-msgstr ""
-
-#: ./behavior/behaviors.py:28
+#: ./behavior/behaviors.py:71
 msgid "Checked it for featured."
 msgstr ""
 
@@ -53,29 +70,41 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: ./interfaces.py:81
-msgid "Don't edit this, auto renew."
-msgstr ""
-
-#: ./profiles/default/types/Ebook.xml
-msgid "Ebook"
-msgstr ""
-
-#: ./interfaces.py:67
-msgid "Ebooks Introduction"
-msgstr ""
-
-#: ./profiles/default/types/Blog.xml
+#: ./profiles/default/types/Ad.xml
 #: ./profiles/default/types/Cover.xml
-#: ./profiles/default/types/Ebook.xml
+#: ./profiles/default/types/Youtube.xml
 msgid "Edit"
+msgstr ""
+
+#: ./portlet/ad.py:42
+msgid "Edit Ad Listing Portlet"
+msgstr ""
+
+#: ./portlet/embed.py:63
+msgid "Edit EmbedHTML Portlet"
 msgstr ""
 
 #: ./portlet/tabs.py:65
 msgid "Edit Tabs Portlet"
 msgstr ""
 
-#: ./behavior/behaviors.py:27
+#: ./portlet/embed.py:21
+msgid "Embed code"
+msgstr ""
+
+#: ./portlet/embed.py:35
+msgid "EmbedHTML"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "EmbedHTML portlet"
+msgstr ""
+
+#: ./interfaces.py:45
+msgid "External"
+msgstr ""
+
+#: ./behavior/behaviors.py:70
 msgid "Featured"
 msgstr ""
 
@@ -83,16 +112,24 @@ msgstr ""
 msgid "Featured for content"
 msgstr ""
 
-#: ./behavior/behaviors.py:47
+#: ./behavior/behaviors.py:97
 #: ./behavior/configure.zcml:42
 msgid "Free Content"
+msgstr ""
+
+#: ./behavior/behaviors.py:77
+msgid "Head Weight"
 msgstr ""
 
 #: ./configure.zcml:25
 msgid "Installs the mingjing.content add-on."
 msgstr ""
 
-#: ./behavior/behaviors.py:38
+#: ./behavior/configure.zcml:56
+msgid "KL land metadata"
+msgstr ""
+
+#: ./behavior/behaviors.py:88
 msgid "Keywords"
 msgstr ""
 
@@ -100,36 +137,16 @@ msgstr ""
 msgid "Keywords for article"
 msgstr ""
 
-#: ./behavior/behaviors.py:39
+#: ./behavior/behaviors.py:89
 msgid "Keywords for article, separate use ','"
 msgstr ""
 
-#: ./interfaces.py:87
-msgid "Live Program 1"
-msgstr ""
-
-#: ./interfaces.py:94
-msgid "Live Program 2"
-msgstr ""
-
-#: ./browser/mjnetSetting.py:32
+#: ./browser/mjnetSetting.py:28
 msgid "MJNet Setting"
 msgstr ""
 
 #: ./profiles/default/controlpanel.xml
 msgid "MJNews setup"
-msgstr ""
-
-#: ./interfaces.py:49
-msgid "Main Slider News"
-msgstr ""
-
-#: ./profiles/default/types/Member.xml
-msgid "Member"
-msgstr ""
-
-#: ./browser/mjnetSetting.py:14
-msgid "Mysql Connection Setting"
 msgstr ""
 
 #: ./behavior/configure.zcml:14
@@ -140,68 +157,49 @@ msgstr ""
 msgid "News Original URL"
 msgstr ""
 
-#: ./behavior/behaviors.py:79
+#: ./behavior/behaviors.py:129
 msgid "Old Create Time"
 msgstr ""
 
-#: ./behavior/behaviors.py:85
+#: ./behavior/behaviors.py:135
 msgid "Old Ebook URL"
 msgstr ""
 
-#: ./behavior/behaviors.py:73
+#: ./behavior/behaviors.py:123
 msgid "Old Keywords"
 msgstr ""
 
-#: ./behavior/behaviors.py:67
+#: ./behavior/behaviors.py:117
 msgid "Old Picture Path"
 msgstr ""
 
-#: ./browser/mjnetSetting.py:20
-msgid "Old Site Mysql Connection Setting"
-msgstr ""
-
-#: ./behavior/behaviors.py:58
+#: ./behavior/behaviors.py:108
 msgid "Original URL"
 msgstr ""
 
-#: ./interfaces.py:68
-msgid "Please input books id, per line 1 id, In order is Newest, Hotest and eBook."
-msgstr ""
-
-#: ./interfaces.py:50
-msgid "Please input news id, per line one id, sorted on modified, max 10 news."
-msgstr ""
-
-#: ./interfaces.py:56
-msgid "Please input news id, per line one id, sorted on modified, max 8 news."
-msgstr ""
-
-#: ./interfaces.py:74
+#: ./interfaces.py:38
 msgid "Please input ranking news id, per line one id, sorted on modified, max 6 news."
 msgstr ""
 
-#: ./interfaces.py:62
-msgid "Please input tabs name, per line 5 tabs, Separated by commas, max 3 lines."
+#: ./behavior/behaviors.py:78
+msgid "Please set Head Weight value, default:10."
 msgstr ""
 
-#: ./interfaces.py:80
-msgid "Radio List"
+#: ./behavior/behaviors.py:53
+msgid "Publish Unit"
 msgstr ""
 
-#: ./interfaces.py:73
+#: ./interfaces.py:37
 msgid "Ranking News"
 msgstr ""
 
+#: ./interfaces.py:44
 #: ./portlet/tabs.py:22
 msgid "Related"
 msgstr ""
 
 #: ./portlet/tabs.py:21
 msgid "Tabs"
-msgstr ""
-
-#: ./interfaces.py:61
-msgid "Tabs Name"
 msgstr ""
 
 #: ./profiles/default/portlets.xml
@@ -212,21 +210,33 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: ./portlet/ad.py:34
+msgid "This portlet rendering Ad Listing."
+msgstr ""
+
+#: ./portlet/embed.py:52
+msgid "This portlet rendering EmbedHTML."
+msgstr ""
+
 #: ./portlet/tabs.py:54
 msgid "This portlet rendering Tabs."
 msgstr ""
 
-#: ./interfaces.py:55
-msgid "Today news"
+#: ./portlet/embed.py:16
+msgid "Title"
+msgstr ""
+
+#: ./interfaces.py:58
+msgid "URL"
 msgstr ""
 
 #: ./configure.zcml:34
 msgid "Uninstalls the mingjing.content add-on."
 msgstr ""
 
-#: ./profiles/default/types/Blog.xml
+#: ./profiles/default/types/Ad.xml
 #: ./profiles/default/types/Cover.xml
-#: ./profiles/default/types/Ebook.xml
+#: ./profiles/default/types/Youtube.xml
 msgid "View"
 msgstr ""
 
@@ -234,8 +244,12 @@ msgstr ""
 msgid "Youtube"
 msgstr ""
 
-#: ./interfaces.py:36
+#: ./interfaces.py:29
 msgid "Youtube URL"
+msgstr ""
+
+#: ./behavior/configure.zcml:63
+msgid "cateTable"
 msgstr ""
 
 #. Default: "Expiration date must be after publishing date."
@@ -291,12 +305,12 @@ msgstr ""
 msgid "help_tags"
 msgstr ""
 
-#: ./browser/mjnetSetting.py:15
-msgid "host,id,username,dbname"
-msgstr ""
-
 #: ./behavior/configure.zcml:28
 msgid "keywords"
+msgstr ""
+
+#: ./behavior/configure.zcml:56
+msgid "klLandMeta"
 msgstr ""
 
 #. Default: "Contributors"

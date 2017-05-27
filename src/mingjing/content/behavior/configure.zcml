@@ -55,5 +55,11 @@
         factory=".behaviors.KlMeta"
         />
 
+    <plone:behavior
+        title="cateTable"
+        description="Category Table"
+        provides=".behaviors.ICateTable"
+        factory=".behaviors.CateTable"
+        />
 
 </configure>

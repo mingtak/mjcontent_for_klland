@@ -74,6 +74,14 @@
       permission="cmf.ReviewPortalContent"
   />
 
+  <!-- override edit form -->
+<!--  <browser:page
+    for="plone.app.contenttypes.interfaces.INewsItem"
+    name="edit"
+    class=".edit_form.EditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+-->
   <!-- configlet -->
   <browser:page
     name="mjnetSettingControlPanel"
@@ -81,4 +89,5 @@
     permission="cmf.ManagePortal"
     class=".mjnetSetting.MJNetSettingControlPanelView"
     />
+
 </configure>

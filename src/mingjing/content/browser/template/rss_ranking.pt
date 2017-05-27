@@ -21,10 +21,6 @@
         <title tal:case="string:d">排行-24小時</title>
         <title tal:case="default">北美觀天下RSS</title>
     </tal:title>
-    <tal:range switch="python:getattr(view.request, 'QUERY_STRING', '')">
-        <link tal:case="string:">${view/request/URL}</link>
-        <link tal:case="default">${view/request/URL}?${view/request/QUERY_STRING}</link>
-    </tal:range>
     <description></description>
 
     <language>zh-tw</language>

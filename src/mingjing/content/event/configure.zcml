@@ -33,6 +33,11 @@
         for="zope.interface.Interface plone.dexterity.interfaces.IEditFinishedEvent"
         handler=".event.toFolderContents"
     />
-
+<!--
+    <subscriber
+        for="plone.app.contenttypes.interfaces.INewsItem plone.dexterity.interfaces.IEditFinishedEvent"
+        handler=".event.editFinished"
+    />
+-->
 </configure>
 

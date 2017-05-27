@@ -19,9 +19,25 @@ import random
 from plone.directives import form
 
 
+class ICateTable(model.Schema):
+    """ Add Category Table """
+
+    model.fieldset(
+        'Category Table',
+        label=_(u"Category Table"),
+        fields=['cateTable']
+    )
+
+    cateTable = schema.Text(
+        title=_(u"Category Table"),
+        required=False,
+    )
+
+
 class IKlMeta(model.Schema):
     """ Add KL land Metadata field """
 
+    """
     cateL1 = schema.TextLine(
         title=_(u"Main Category"),
         required=False,
@@ -31,6 +47,7 @@ class IKlMeta(model.Schema):
         title=_(u"Sub Category"),
         required=False,
     )
+    """
 
     pubUnit = schema.TextLine(
         title=_(u"Publish Unit"),
@@ -38,6 +55,8 @@ class IKlMeta(model.Schema):
     )
 
 #    form.mode(dfilesString='hidden')
+# 開發完成這個要hidden掉
+    dexterity.write_permission(dfilesString='cmf.ManagePortal')
     dfilesString = schema.Text(
         title=(u"Download file string(href, json string)"),
         required=False,
@@ -125,6 +144,7 @@ alsoProvides(IOldFields, IFormFieldProvider)
 alsoProvides(IKeywords, IFormFieldProvider)
 alsoProvides(IFeatured, IFormFieldProvider)
 alsoProvides(IKlMeta, IFormFieldProvider)
+alsoProvides(ICateTable, IFormFieldProvider)
 
 
 def context_property(name):
@@ -172,6 +192,17 @@ class FreeContent(object):
 
     # -*- Your behavior property setters & getters here ... -*-
     freeContent = context_property("freeContent")
+
+
+class CateTable(object):
+    implements(ICateTable)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    cateTable = context_property("cateTable")
 
 
 class Keywords(object):

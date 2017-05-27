@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-03-05 06:28+0000\n"
+"POT-Creation-Date: 2017-05-26 15:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,34 +15,51 @@ msgstr ""
 "Domain: DOMAIN\n"
 
 #: ./profiles/default/portlets.xml
+msgid "A portlet to rendering Ad Listing."
+msgstr "顯示廣告側邊欄"
+
+#: ./profiles/default/portlets.xml
+msgid "A portlet to rendering EmbedHTML."
+msgstr "顯示 <iframe> 嵌入碼"
+
+#: ./profiles/default/portlets.xml
 msgid "A portlet to rendering Tabs contents."
 msgstr "側邊欄位,顯示Tab列表"
+
+#: ./profiles/default/types/Ad.xml
+msgid "Ad"
+msgstr "廣告"
+
+#: ./profiles/default/portlets.xml
+msgid "Ad Listing portlet"
+msgstr "顯示廣告側邊欄"
+
+#: ./portlet/ad.py:33
+msgid "Add Ad Listing Portlet"
+msgstr "新增廣告側邊欄"
+
+#: ./portlet/embed.py:51
+msgid "Add EmbedHTML Portlet"
+msgstr "新增 <iframe> 嵌入側邊欄"
 
 #: ./portlet/tabs.py:53
 msgid "Add Tabs Portlet"
 msgstr "新增Tab列表側邊欄"
 
-#: ./behavior/configure.zcml:60
-msgid "Adds keywords(without language) fields."
+#: ./browser/mjnetSetting.py:15
+msgid "Categories Dict"
 msgstr ""
 
-#: ./behavior/configure.zcml:70
-msgid "Adds title and description fields."
-msgstr "新增標題/描述欄位"
+#: ./interfaces.py:52
+msgid "Category"
+msgstr ""
 
-#: ./behavior/configure.zcml:70
-msgid "Basic metadata"
-msgstr "內容基本描述"
+#: ./behavior/behaviors.py:27
+#: ./behavior/configure.zcml:63
+msgid "Category Table"
+msgstr ""
 
-#: ./profiles/default/types/Blog.xml
-msgid "Blog"
-msgstr "部落格"
-
-#: ./behavior/configure.zcml:60
-msgid "Categorization"
-msgstr "分類"
-
-#: ./behavior/behaviors.py:28
+#: ./behavior/behaviors.py:71
 msgid "Checked it for featured."
 msgstr "勾選設定為精選文章"
 
@@ -50,29 +67,41 @@ msgstr "勾選設定為精選文章"
 msgid "Cover"
 msgstr "首頁封面"
 
-#: ./interfaces.py:81
-msgid "Don't edit this, auto renew."
-msgstr "請勿編輯本欄,本欄自動更新"
-
-#: ./profiles/default/types/Ebook.xml
-msgid "Ebook"
-msgstr "電子書"
-
-#: ./interfaces.py:67
-msgid "Ebooks Introduction"
-msgstr "電子書介紹"
-
-#: ./profiles/default/types/Blog.xml
+#: ./profiles/default/types/Ad.xml
 #: ./profiles/default/types/Cover.xml
-#: ./profiles/default/types/Ebook.xml
+#: ./profiles/default/types/Youtube.xml
 msgid "Edit"
 msgstr "編輯"
+
+#: ./portlet/ad.py:42
+msgid "Edit Ad Listing Portlet"
+msgstr "編輯廣告列表側邊欄"
+
+#: ./portlet/embed.py:63
+msgid "Edit EmbedHTML Portlet"
+msgstr "編輯 <iframe> 嵌入碼側邊欄"
 
 #: ./portlet/tabs.py:65
 msgid "Edit Tabs Portlet"
 msgstr "編輯側邊欄Tab"
 
-#: ./behavior/behaviors.py:27
+#: ./portlet/embed.py:21
+msgid "Embed code"
+msgstr "嵌入碼"
+
+#: ./portlet/embed.py:35
+msgid "EmbedHTML"
+msgstr "嵌入 HTML 碼"
+
+#: ./profiles/default/portlets.xml
+msgid "EmbedHTML portlet"
+msgstr "嵌入 HTML 碼側邊欄"
+
+#: ./interfaces.py:45
+msgid "External"
+msgstr "外部連結(頁腳)"
+
+#: ./behavior/behaviors.py:70
 msgid "Featured"
 msgstr "精選"
 
@@ -80,16 +109,24 @@ msgstr "精選"
 msgid "Featured for content"
 msgstr "精選文章設定"
 
-#: ./behavior/behaviors.py:47
+#: ./behavior/behaviors.py:97
 #: ./behavior/configure.zcml:42
 msgid "Free Content"
 msgstr "免費觀看內容"
+
+#: ./behavior/behaviors.py:77
+msgid "Head Weight"
+msgstr "權重"
 
 #: ./configure.zcml:25
 msgid "Installs the mingjing.content add-on."
 msgstr "安裝 mingjing.content 模組"
 
-#: ./behavior/behaviors.py:38
+#: ./behavior/configure.zcml:56
+msgid "KL land metadata"
+msgstr "基隆市地政處 metadata"
+
+#: ./behavior/behaviors.py:88
 msgid "Keywords"
 msgstr "關鍵字"
 
@@ -97,37 +134,17 @@ msgstr "關鍵字"
 msgid "Keywords for article"
 msgstr "設定文章關鍵字"
 
-#: ./behavior/behaviors.py:39
+#: ./behavior/behaviors.py:89
 msgid "Keywords for article, separate use ','"
 msgstr "設定文章關鍵字，請以半型逗號,分隔"
 
-#: ./interfaces.py:87
-msgid "Live Program 1"
-msgstr "直播節目表 1"
-
-#: ./interfaces.py:94
-msgid "Live Program 2"
-msgstr "直播節目表 2"
-
-#: ./browser/mjnetSetting.py:32
+#: ./browser/mjnetSetting.py:28
 msgid "MJNet Setting"
 msgstr "北美觀天下設定"
 
 #: ./profiles/default/controlpanel.xml
 msgid "MJNews setup"
 msgstr "北美觀天下設定"
-
-#: ./interfaces.py:49
-msgid "Main Slider News"
-msgstr "新聞(slider輪播)"
-
-#: ./profiles/default/types/Member.xml
-msgid "Member"
-msgstr "會員"
-
-#: ./browser/mjnetSetting.py:14
-msgid "Mysql Connection Setting"
-msgstr "Mysql連線設定"
 
 #: ./behavior/configure.zcml:14
 msgid "Named content id from time stamp"
@@ -137,69 +154,50 @@ msgstr "以 timestamp 設定 id"
 msgid "News Original URL"
 msgstr "新聞原始連結"
 
-#: ./behavior/behaviors.py:79
+#: ./behavior/behaviors.py:129
 msgid "Old Create Time"
 msgstr "舊資料的建立時間"
 
-#: ./behavior/behaviors.py:85
+#: ./behavior/behaviors.py:135
 msgid "Old Ebook URL"
 msgstr "舊電子書(Ebook)連結"
 
-#: ./behavior/behaviors.py:73
+#: ./behavior/behaviors.py:123
 msgid "Old Keywords"
 msgstr "舊資料的 keywords"
 
-#: ./behavior/behaviors.py:67
+#: ./behavior/behaviors.py:117
 msgid "Old Picture Path"
 msgstr "舊資料的圖檔連結"
 
-#: ./browser/mjnetSetting.py:20
-msgid "Old Site Mysql Connection Setting"
-msgstr "舊站Mysql連線設定(同步用)"
-
-#: ./behavior/behaviors.py:58
+#: ./behavior/behaviors.py:108
 msgid "Original URL"
 msgstr "來源連結"
 
-#: ./interfaces.py:68
-msgid "Please input books id, per line 1 id, In order is Newest, Hotest and eBook."
-msgstr "請輸入書刊 id, 每行一個 id, 可輸入3本書刊，依序是最新書刊/最熱書刊/電子書刊"
-
-#: ./interfaces.py:50
-msgid "Please input news id, per line one id, sorted on modified, max 10 news."
-msgstr "請輸入新聞 id, 每行一個 id, 會自動以最後修訂排序, 最多10筆新聞"
-
-#: ./interfaces.py:56
-msgid "Please input news id, per line one id, sorted on modified, max 8 news."
-msgstr "請輸入新聞 id, 每行一個 id, 會自動以最後修訂排序, 最多8筆新聞"
-
-#: ./interfaces.py:74
+#: ./interfaces.py:38
 msgid "Please input ranking news id, per line one id, sorted on modified, max 6 news."
 msgstr "請輸入排行新聞 id, 每行一個 id, 會自動以最後修訂排序, 最多8筆新聞"
 
-#: ./interfaces.py:62
-msgid "Please input tabs name, per line 5 tabs, Separated by commas, max 3 lines."
-msgstr "請輸入 tab 名稱，每行5個 tab, 以半型逗號 ',' 分隔，最多三行"
+#: ./behavior/behaviors.py:78
+msgid "Please set Head Weight value, default:10."
+msgstr "請設定權重，值愈大在首頁的顯示愈靠前，預設值 10"
 
-#: ./interfaces.py:80
-msgid "Radio List"
-msgstr "電台列表"
+#: ./behavior/behaviors.py:53
+msgid "Publish Unit"
+msgstr "發佈單位"
 
-#: ./interfaces.py:73
+#: ./interfaces.py:37
 msgid "Ranking News"
 msgstr "新聞排行榜"
 
+#: ./interfaces.py:44
 #: ./portlet/tabs.py:22
 msgid "Related"
-msgstr "關聯項目"
+msgstr "關聯項目(右側邊欄)"
 
 #: ./portlet/tabs.py:21
 msgid "Tabs"
 msgstr "Tabs"
-
-#: ./interfaces.py:61
-msgid "Tabs Name"
-msgstr "Tab 名稱"
 
 #: ./profiles/default/portlets.xml
 msgid "Tabs portlet"
@@ -209,21 +207,33 @@ msgstr "Tab 側邊欄"
 msgid "Text"
 msgstr "完整內容"
 
+#: ./portlet/ad.py:34
+msgid "This portlet rendering Ad Listing."
+msgstr "在側邊欄顯示廣告列表"
+
+#: ./portlet/embed.py:52
+msgid "This portlet rendering EmbedHTML."
+msgstr "在側邊欄顯示 HTML 嵌入碼"
+
 #: ./portlet/tabs.py:54
 msgid "This portlet rendering Tabs."
 msgstr "這個側邊欄顯示 Tabs 列表"
 
-#: ./interfaces.py:55
-msgid "Today news"
-msgstr "今日新聞"
+#: ./portlet/embed.py:16
+msgid "Title"
+msgstr "標題"
+
+#: ./interfaces.py:58
+msgid "URL"
+msgstr "網址"
 
 #: ./configure.zcml:34
 msgid "Uninstalls the mingjing.content add-on."
 msgstr "御載 mingjing.content 模組"
 
-#: ./profiles/default/types/Blog.xml
+#: ./profiles/default/types/Ad.xml
 #: ./profiles/default/types/Cover.xml
-#: ./profiles/default/types/Ebook.xml
+#: ./profiles/default/types/Youtube.xml
 msgid "View"
 msgstr "觀看"
 
@@ -231,9 +241,13 @@ msgstr "觀看"
 msgid "Youtube"
 msgstr "Youtube 影片"
 
-#: ./interfaces.py:36
+#: ./interfaces.py:29
 msgid "Youtube URL"
 msgstr "Youtube 連結"
+
+#: ./behavior/configure.zcml:63
+msgid "cateTable"
+msgstr ""
 
 #. Default: "Expiration date must be after publishing date."
 #: ./behavior/metadata.py:164
@@ -288,13 +302,13 @@ msgstr ""
 msgid "help_tags"
 msgstr "請對本文下關鍵字以分類文章"
 
-#: ./browser/mjnetSetting.py:15
-msgid "host,id,username,dbname"
-msgstr ""
-
 #: ./behavior/configure.zcml:28
 msgid "keywords"
 msgstr "關鍵字"
+
+#: ./behavior/configure.zcml:56
+msgid "klLandMeta"
+msgstr ""
 
 #. Default: "Contributors"
 #: ./behavior/metadata.py:205
