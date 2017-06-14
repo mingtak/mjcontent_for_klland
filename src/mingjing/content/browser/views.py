@@ -117,11 +117,11 @@ class CoverView(BrowserView):
 
         # 最新消息
         brain_news = api.content.find( context=portal['2']['1'], Type='Page', review_state='published',
-            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+            sort_on='headWeight', sort_order='reverse', sort_limit=8)[:8]
 
         # 法令新訊
         brain_law = api.content.find( context=portal['3']['1'], Type='Page', review_state='published',
-            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
+            sort_on='headWeight', sort_order='reverse', sort_limit=8)[:8]
 
         # 線上查詢
 #        brain_inquery = api.content.find( context=portal['3'], Type='Page', review_state='published', featured=True,
@@ -224,3 +224,26 @@ class TransState(BrowserView):
             api.content.transition(obj=obj, transition='reject')
         else:
             api.content.transition(obj=obj, transition='publish')
+
+
+class DeleteObj(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+#        import pdb; pdb.set_trace()
+        uid = request.form.get('uid')
+        if not uid:
+            return
+
+        obj = api.content.find(UID=uid)[0].getObject()
+        api.content.delete(obj=obj)
+
+
+class NormalView(BrowserView):
+
+    template = ViewPageTemplateFile("template/normal_view.pt")
+
+    def __call__(self):
+        return self.template()

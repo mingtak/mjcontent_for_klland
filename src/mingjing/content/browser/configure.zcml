@@ -74,6 +74,21 @@
       permission="cmf.ReviewPortalContent"
   />
 
+  <browser:page
+      name="delete_obj"
+      for="*"
+      class=".views.DeleteObj"
+      layer="mingjing.content.interfaces.IMingjingContentLayer"
+      permission="cmf.ReviewPortalContent"
+  />
+
+  <browser:page
+      name="normal_view"
+      for="plone.app.contenttypes.interfaces.IDocument"
+      class=".views.NormalView"
+      permission="zope2.View"
+  />
+
   <!-- override edit form -->
 <!--  <browser:page
     for="plone.app.contenttypes.interfaces.INewsItem"
@@ -89,5 +104,12 @@
     permission="cmf.ManagePortal"
     class=".mjnetSetting.MJNetSettingControlPanelView"
     />
+
+  <browser:page
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      name="setupPassword"
+      permission="cmf.ManagePortal"
+      class=".setupPassword.SetupPassword"
+      />
 
 </configure>

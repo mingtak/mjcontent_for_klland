@@ -54,8 +54,7 @@ class IKlMeta(model.Schema):
         required=False,
     )
 
-#    form.mode(dfilesString='hidden')
-# 開發完成這個要hidden掉
+    form.mode(dfilesString='hidden')
     dexterity.write_permission(dfilesString='cmf.ManagePortal')
     dfilesString = schema.Text(
         title=(u"Download file string(href, json string)"),
@@ -74,6 +73,7 @@ class IFeatured(model.Schema):
         required=False,
     )
 
+    form.mode(headWeight='hidden')
     headWeight = schema.Int(
         title=_(u"Head Weight"),
         description=_(u"Please set Head Weight value, default:10."),

@@ -30,12 +30,13 @@ class IYoutube(Interface):
         required=True,
     )
 
+
 class ICover(Interface):
     """  """
-
-    rankingNews = schema.Text(
-        title=_(u"Ranking News"),
-        description=_(u"Please input ranking news id, per line one id, sorted on modified, max 6 news."),
+    relatedURL = schema.List(
+        title=_(u"Related URL"),
+        description=_(u"Filed format: title|||URL"),
+        value_type=schema.TextLine(title=u"Related URL"),
         required=False,
     )
 
