@@ -117,11 +117,11 @@ class CoverView(BrowserView):
 
         # 最新消息
         brain_news = api.content.find( context=portal['2']['1'], Type='Page', review_state='published',
-            sort_on='headWeight', sort_order='reverse', sort_limit=8)[:8]
+            sort_on='headWeight', sort_order='reverse', sort_limit=5)[:5]
 
         # 法令新訊
         brain_law = api.content.find( context=portal['3']['1'], Type='Page', review_state='published',
-            sort_on='headWeight', sort_order='reverse', sort_limit=8)[:8]
+            sort_on='headWeight', sort_order='reverse', sort_limit=5)[:5]
 
         # 線上查詢
 #        brain_inquery = api.content.find( context=portal['3'], Type='Page', review_state='published', featured=True,
