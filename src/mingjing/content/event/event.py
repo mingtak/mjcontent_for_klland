@@ -48,8 +48,8 @@ def moveContentToTop(item, event):
 def userLoginToFolderContents(event):
     portal = api.portal.get()
     current = api.user.get_current()
-    if api.user.has_permission('Modify portal content', user=current):
-        portal.REQUEST.response.redirect('%s/folder_contents' % portal.absolute_url())
+#    if api.user.has_permission('Modify portal content', user=current):
+    portal.REQUEST.response.redirect('%s/folder_contents' % portal.absolute_url())
 
 
 def addCancelToFolderContents(item, event):

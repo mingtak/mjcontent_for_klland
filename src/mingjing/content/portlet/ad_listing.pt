@@ -5,11 +5,12 @@ brain = portal['resource']['ad'].restrictedTraverse('@@contentlisting')(Type='Ad
 ?>
 
 <div class="portlet-ad-listing">
-<h5 class="widget-title">地政相關連結</h5>
+
+<header class="portletHeader">地政相關連結</header>
 <a  tal:repeat="item brain"
     href="${python:item.url}" title="${item/title}" target="_blank">
-    <div style="text-align:center">
-        <img style="width:80%; margin: 2px auto" src="${item/getURL}/@@images/image/preview" alt="${item/title}">
+    <div class="ad-image">
+        <img src="${item/getURL}/@@images/image/preview" alt="${item/title}">
     </div>
 </a>
 
