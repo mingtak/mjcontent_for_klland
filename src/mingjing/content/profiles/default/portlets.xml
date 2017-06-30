@@ -29,5 +29,13 @@
                      description"
     />
 
+  <portlet
+    addview="mingjing.content.portlet.Hot"
+    title="Hot Listing portlet"
+    description="A portlet to rendering Hot Listing."
+    i18n:attributes="title;
+                     description"
+    />
+
 </portlets>
 

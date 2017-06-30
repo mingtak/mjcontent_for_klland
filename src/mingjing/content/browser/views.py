@@ -9,9 +9,29 @@ import json
 from time import time
 from Products.CMFPlone.utils import safe_unicode
 import logging
+import pickle
 
 logger = logging.getLogger('mingjing.content')
 LIMIT=20
+
+
+class Rank(BrowserView):
+
+    template = ViewPageTemplateFile("template/rank.pt")
+
+    def loadFile(self, filename):
+        try:
+            with open('/tmp/%s' % filename) as file:
+                return pickle.load(file)
+        except:
+            return None
+
+    def __call__(self):
+        self.today = self.loadFile('statToday')[:20]
+        self.week = self.loadFile('statWeek')[:20]
+        self.month = self.loadFile('statMonth')[:20]
+
+        return self.template()
 
 
 class ShowFeatured(BrowserView):

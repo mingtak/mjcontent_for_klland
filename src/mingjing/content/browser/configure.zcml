@@ -112,4 +112,11 @@
       class=".setupPassword.SetupPassword"
       />
 
+  <browser:page
+      name="rank"
+      for="*"
+      class=".views.Rank"
+      permission="cmf.ManagePortal"
+      />
+
 </configure>

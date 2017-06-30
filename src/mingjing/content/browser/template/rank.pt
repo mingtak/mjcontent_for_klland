@@ -12,11 +12,31 @@
 <metal:content-core define-macro="content-core"
                     tal:define="toc context/table_of_contents|nothing;">
 
-Ranking Page
+<?python
+from plone import api
+?>
+
+<h2>熱門點閱排名</h2>
+<table>
+<tr class="head">
+  <td>序位</td>
+  <td>標題</td>
+  <td>點閱數</td>
+</tr>
+
+<tr class="body" tal:repeat="item view/month">
+  <td>${repeat/item/number}</td>
+  <td style="width:80%; padding:5px" tal:define="obj python:api.content.find(UID=item[0])[0]">
+      <a href="${obj/getURL}">${obj/Title}</a>
+  </td>
+  <td>${python:item[1]}</td>
+</tr>
+
+
+</table>
 
 </metal:content-core>
 </metal:content-core>
 
 </body>
 </html>
-

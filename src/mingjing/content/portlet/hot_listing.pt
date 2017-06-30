@@ -1,0 +1,15 @@
+<?python
+from plone import api
+portal = api.portal.get()
+brain = api.content.find(context=portal, UID=view.monthList)[:5]
+?>
+
+<div class="portlet-hot-listing">
+
+<header class="portletHeader">熱門連結</header>
+<ul>
+    <li tal:repeat="item brain">
+        <a alt="${item/Title}" href="${item/getURL}">${item/Title}</a>
+    </li>
+</ul>
+</div>

@@ -31,5 +31,14 @@
         editview=".ad.EditForm"
         />
 
+    <plone:portlet
+        name="mingjing.content.portlet.Hot"
+        interface=".hot.IHot"
+        assignment=".hot.Assignment"
+        renderer=".hot.Renderer"
+        addview=".hot.AddForm"
+        editview=".hot.EditForm"
+        />
+
 </configure>
 

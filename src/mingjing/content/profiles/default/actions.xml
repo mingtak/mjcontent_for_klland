@@ -295,6 +295,18 @@
  <object name="user" meta_type="CMF Action Category">
   <property name="title"></property>
 
+  <object name="Ranking" meta_type="CMF Action" i18n:domain="mingjing.content" insert-before="logout">
+   <property name="title" i18n:translate="">Ranking</property>
+   <property name="description" i18n:translate="">Ranking</property>
+   <property name="url_expr">string:${portal_url}/@@rank</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Manage portal"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
   <object name="SetupPassword" meta_type="CMF Action" i18n:domain="mingjing.content" insert-before="logout">
    <property name="title" i18n:translate="">Setup Password</property>
    <property name="description" i18n:translate="">Setup password</property>
