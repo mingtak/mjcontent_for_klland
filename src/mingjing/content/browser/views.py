@@ -31,14 +31,15 @@ class Rank(BrowserView):
         request = self.request
         range = request.get('range', 'Today')
 
+#        import pdb; pdb.set_trace()
         if range in ['Today', 'Week', 'Month']:
             self.result = self.loadFile('stat%s' % range)[:20]
             return self.template()
 
         todayStr = DateTime().strftime('%Y-%m-%d')
-        view.start = request.get('start', None)
-        view.end = request.get('end', todayStr)
-
+        self.start = request.get('start', None)
+        self.end = request.get('end', todayStr)
+#        import pdb; pdb.set_trace()
         return self.template()
 
 
