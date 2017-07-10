@@ -11,6 +11,7 @@ from Products.CMFPlone.utils import safe_unicode
 import logging
 import pickle
 import MySQLdb
+import operator
 
 
 logger = logging.getLogger('mingjing.content')
@@ -27,6 +28,20 @@ class Rank(BrowserView):
                 return pickle.load(file)
         except:
             return None
+
+
+    def statResult(self, result):
+        rank = {}
+        for item in result:
+            if rank.has_key(item[0]):
+                rank[item[0]] += item[1]
+            else:
+                rank[item[0]] = item[1]
+
+        sortedRank = sorted(rank.items(), key=operator.itemgetter(1))
+        sortedRank.reverse()
+        return sortedRank
+
 
     def __call__(self):
 
@@ -58,6 +73,8 @@ class Rank(BrowserView):
         statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
         cursor.execute(statSql)
         self.result = cursor.fetchall()
+        self.result = self.statResult(self.result)
+
         db.close()
         return self.template()
 
