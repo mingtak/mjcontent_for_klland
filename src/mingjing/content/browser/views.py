@@ -27,9 +27,17 @@ class Rank(BrowserView):
             return None
 
     def __call__(self):
-        self.today = self.loadFile('statToday')[:20]
-        self.week = self.loadFile('statWeek')[:20]
-        self.month = self.loadFile('statMonth')[:20]
+
+        request = self.request
+        range = request.get('range', 'Today')
+
+        if range in ['Today', 'Week', 'Month']:
+            self.result = self.loadFile('stat%s' % range)[:20]
+            return self.template()
+
+        todayStr = DateTime().strftime('%Y-%m-%d')
+        view.start = request.get('start', None)
+        view.end = request.get('end', todayStr)
 
         return self.template()
 

@@ -14,9 +14,29 @@
 
 <?python
 from plone import api
+portal = api.portal.get()
 ?>
 
-<h2>熱門點閱排名</h2>
+<h2>熱門點閱排行</h2>
+
+<p>
+<h4>常用排行:</h4>
+<a href="${portal/absolute_url}/rank?range=Today">日排行</a>
+<a href="${portal/absolute_url}/rank?range=Week">周排行</a>
+<a href="${portal/absolute_url}/rank?range=Month">月排行</a>
+</p>
+
+<div class="date-range">
+<h4>時間區間查詢:</h4>
+    <form action="${portal/absolute_url}/rank">
+        <span>起始日期: </span><input type="date" name="start" />
+        <span>結束日期: </span><input type="date" name="end" />
+        <input type="submit" name="submit" value="查詢"/>
+    </form>
+</div>
+
+<h4 tal:condition="view/start">查詢時間區間:${view/start}~${view/end}</h4>
+
 <table>
 <tr class="head">
   <td>序位</td>
@@ -24,7 +44,7 @@ from plone import api
   <td>點閱數</td>
 </tr>
 
-<tr class="body" tal:repeat="item view/month">
+<tr class="body" tal:repeat="item view/result">
   <td>${repeat/item/number}</td>
   <td style="width:80%; padding:5px" tal:define="obj python:api.content.find(UID=item[0])[0]">
       <a href="${obj/getURL}">${obj/Title}</a>
