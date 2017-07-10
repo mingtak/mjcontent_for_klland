@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 import transaction
+import MySQLdb
 
 
 """
@@ -55,3 +56,15 @@ def userLoginToFolderContents(event):
 def addCancelToFolderContents(item, event):
     item.REQUEST.response.redirect('%s/folder_contents' % item.absolute_url())
 
+
+def willBeRemoved(event):
+    try:
+        item = event.object
+        uid = item.UID()
+        db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
+        cursor = db.cursor()
+        sqlStr = "DELETE FROM `kl_counter` WHERE uid='%s'" % uid
+        cursor.execute(sqlStr)
+        db.commit()
+        db.close()
+    except:pass

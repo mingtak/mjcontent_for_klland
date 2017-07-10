@@ -39,5 +39,10 @@
         handler=".event.editFinished"
     />
 -->
-</configure>
 
+    <subscriber
+        for="OFS.interfaces.IObjectWillBeRemovedEvent"
+        handler=".event.willBeRemoved"
+    />
+
+</configure>

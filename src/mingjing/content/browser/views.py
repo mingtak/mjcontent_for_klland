@@ -10,6 +10,8 @@ from time import time
 from Products.CMFPlone.utils import safe_unicode
 import logging
 import pickle
+import MySQLdb
+
 
 logger = logging.getLogger('mingjing.content')
 LIMIT=20
@@ -30,16 +32,33 @@ class Rank(BrowserView):
 
         request = self.request
         range = request.get('range', 'Today')
+        todayStr = DateTime().strftime('%Y-%m-%d')
 
-#        import pdb; pdb.set_trace()
-        if range in ['Today', 'Week', 'Month']:
+        if range in ['Today', 'Week', 'Month'] and not request.form.has_key('start'):
             self.result = self.loadFile('stat%s' % range)[:20]
+            self.end = todayStr
+            if range == 'Today':
+                self.start = todayStr
+            if range == 'Week':
+                self.start = (DateTime() - 7).strftime('%Y-%m-%d')
+            if range == 'Month':
+                self.start = (DateTime() - 30).strftime('%Y-%m-%d')
             return self.template()
 
-        todayStr = DateTime().strftime('%Y-%m-%d')
-        self.start = request.get('start', None)
+        db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
+        self.start = request.get('start', todayStr)
         self.end = request.get('end', todayStr)
-#        import pdb; pdb.set_trace()
+
+        if not self.start:
+            self.start = todayStr
+        if not self.end:
+            self.end = todayStr
+
+        cursor = db.cursor()
+        statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
+        cursor.execute(statSql)
+        self.result = cursor.fetchall()
+        db.close()
         return self.template()
 
 

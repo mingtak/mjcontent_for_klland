@@ -35,7 +35,7 @@ portal = api.portal.get()
     </form>
 </div>
 
-<h4 tal:condition="python:hasattr(view, 'start')">查詢時間區間:${view/start}~${view/end}</h4>
+<h4 talcondition="python:hasattr(view, 'start')">查詢時間區間:${view/start}~${view/end}</h4>
 
 <table>
 <tr class="head">
