@@ -46,6 +46,7 @@ classification = SimpleVocabulary(
      SimpleTerm(value=u'external', title=_(u'External'))]
 )
 
+
 class IAd(Interface):
     """  """
 
@@ -57,5 +58,19 @@ class IAd(Interface):
 
     url = schema.URI(
         title=_(u"URL"),
+        required=True,
+    )
+
+
+class IRelatedLink(Interface):
+    """  """
+
+    url = schema.URI(
+        title=_(u"URL"),
+        required=True,
+    )
+
+    color = schema.TextLine(
+        title=_(u"Background Color code"),
         required=True,
     )

@@ -3,4 +3,5 @@
   <object name="Cover" meta_type="Dexterity FTI"/>
   <object name="Youtube" meta_type="Dexterity FTI"/>
   <object name="Ad" meta_type="Dexterity FTI"/>
+  <object name="RelatedLink" meta_type="Dexterity FTI"/>
 </object>
