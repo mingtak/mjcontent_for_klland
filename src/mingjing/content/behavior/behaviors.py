@@ -19,6 +19,17 @@ import random
 from plone.directives import form
 
 
+class IContentLog(model.Schema):
+    """ Add Content Log Field """
+
+    form.mode(contentLog='hidden')
+    contentLog = schema.List(
+        title=_(u"Content Log"),
+        value_type=schema.TextLine(title=_("Content Log")),
+        required=False,
+    )
+
+
 class ICateTable(model.Schema):
     """ Add Category Table """
 
@@ -73,7 +84,7 @@ class IFeatured(model.Schema):
         required=False,
     )
 
-    form.mode(headWeight='hidden')
+#    form.mode(headWeight='hidden')
     headWeight = schema.Int(
         title=_(u"Head Weight"),
         description=_(u"Please set Head Weight value, default:10."),
@@ -143,6 +154,7 @@ alsoProvides(IOriginalUrl, IFormFieldProvider)
 alsoProvides(IOldFields, IFormFieldProvider)
 alsoProvides(IKeywords, IFormFieldProvider)
 alsoProvides(IFeatured, IFormFieldProvider)
+alsoProvides(IContentLog, IFormFieldProvider)
 alsoProvides(IKlMeta, IFormFieldProvider)
 alsoProvides(ICateTable, IFormFieldProvider)
 
@@ -181,6 +193,17 @@ class Featured(object):
     # -*- Your behavior property setters & getters here ... -*-
     featured = context_property("featured")
     headWeight = context_property("headWeight")
+
+
+class ContentLog(object):
+    implements(IContentLog)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    contentLog = context_property("contentLog")
 
 
 class FreeContent(object):

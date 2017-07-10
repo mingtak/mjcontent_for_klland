@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+from Products.CMFPlone.utils import safe_unicode
 from plone import api
+from DateTime import DateTime
 import transaction
 import MySQLdb
 
@@ -68,3 +70,16 @@ def willBeRemoved(event):
         db.commit()
         db.close()
     except:pass
+
+
+def logToContent(item, event):
+
+    if hasattr(item, 'contentLog'):
+        if 'EditFinished' in str(event):
+            eventName = safe_unicode('編輯')
+        else:
+            eventName = safe_unicode('新增')
+        logStr = '%s,%s,%s' % (DateTime().strftime('%Y/%m/%d %H:%M:%S'), api.user.get_current().id, eventName)
+        if item.contentLog is None:
+            item.contentLog = []
+        item.contentLog.insert(0, logStr)

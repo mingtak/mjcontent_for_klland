@@ -45,4 +45,15 @@
         handler=".event.willBeRemoved"
     />
 
+
+    <subscriber
+        for="* zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        handler=".event.logToContent"
+    />
+
+    <subscriber
+        for="* plone.dexterity.interfaces.IEditFinishedEvent"
+        handler=".event.logToContent"
+    />
+
 </configure>

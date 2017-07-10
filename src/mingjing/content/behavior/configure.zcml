@@ -62,4 +62,11 @@
         factory=".behaviors.CateTable"
         />
 
+    <plone:behavior
+        title="contentLog"
+        description="Content Log"
+        provides=".behaviors.IContentLog"
+        factory=".behaviors.ContentLog"
+        />
+
 </configure>

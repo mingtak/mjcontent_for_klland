@@ -38,6 +38,7 @@
     <element value="mingjing.content.behavior.behaviors.IFeatured" />
     <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
     <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
+    <element value="mingjing.content.behavior.behaviors.IContentLog" />
 <!--    <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/> -->
   </property>
 
