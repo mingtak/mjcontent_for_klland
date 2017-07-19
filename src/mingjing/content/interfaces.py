@@ -40,6 +40,13 @@ class ICover(Interface):
         required=False,
     )
 
+    marquee = schema.List(
+        title=_(u"Custom Marquee"),
+        value_type=schema.TextLine(title=u"Custom Marquee"),
+        required=False,
+    )
+
+
 
 classification = SimpleVocabulary(
     [SimpleTerm(value=u'related', title=_(u'Related')),
