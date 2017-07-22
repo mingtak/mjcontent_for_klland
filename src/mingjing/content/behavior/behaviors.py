@@ -17,6 +17,53 @@ from plone.app.content.interfaces import INameFromTitle
 from DateTime import DateTime
 import random
 from plone.directives import form
+from plone.namedfile.field import NamedBlobImage, NamedBlobFile
+
+
+class INamedBlob(model.Schema):
+    """ Add NamedBlobImage, and NamedBlobFile """
+
+    model.fieldset(
+        'Files',
+        label=_(u"Files"),
+        fields=['file_1', 'file_2', 'file_3']
+    )
+
+    model.fieldset(
+        'Images',
+        label=_(u"Images"),
+        fields=['image_1', 'image_2', 'image_3']
+    )
+
+    file_1 = NamedBlobFile(
+        title=_(u"File"),
+        required=False,
+    )
+
+    file_2 = NamedBlobFile(
+        title=_(u"File"),
+        required=False,
+    )
+
+    file_3 = NamedBlobFile(
+        title=_(u"File"),
+        required=False,
+    )
+
+    image_1 = NamedBlobImage(
+        title=_(u"Image"),
+        required=False,
+    )
+
+    image_2 = NamedBlobImage(
+        title=_(u"Image"),
+        required=False,
+    )
+
+    image_3 = NamedBlobImage(
+        title=_(u"Image"),
+        required=False,
+    )
 
 
 class IContentLog(model.Schema):
@@ -157,6 +204,7 @@ alsoProvides(IFeatured, IFormFieldProvider)
 alsoProvides(IContentLog, IFormFieldProvider)
 alsoProvides(IKlMeta, IFormFieldProvider)
 alsoProvides(ICateTable, IFormFieldProvider)
+alsoProvides(INamedBlob, IFormFieldProvider)
 
 
 def context_property(name):
@@ -267,6 +315,22 @@ class KlMeta(object):
 class INamedFromTimeStamp(INameFromTitle):
     """ Marker/Form interface for namedFromTimeStamp
     """
+
+
+class NamedBlob(object):
+    implements(INamedBlob)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    file_1 = context_property("file_1")
+    file_2 = context_property("file_2")
+    file_3 = context_property("file_3")
+    image_1 = context_property("image_1")
+    image_2 = context_property("image_2")
+    image_3 = context_property("image_3")
 
 
 class NamedFromTimeStamp(object):

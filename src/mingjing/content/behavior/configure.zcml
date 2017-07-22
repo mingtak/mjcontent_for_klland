@@ -69,4 +69,11 @@
         factory=".behaviors.ContentLog"
         />
 
+    <plone:behavior
+        title="namedBlob"
+        description="Add Named Blob Files, and Images"
+        provides=".behaviors.INamedBlob"
+        factory=".behaviors.NamedBlob"
+        />
+
 </configure>

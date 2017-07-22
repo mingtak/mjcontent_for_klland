@@ -13,7 +13,7 @@ from DateTime import DateTime
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 date_range = {
-    'query': (DateTime()-1, DateTime()), 
+    'query': (DateTime()-1, DateTime()),
     'range': 'min:max',
 }
 
