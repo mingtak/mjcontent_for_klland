@@ -119,4 +119,11 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+      name="site_map"
+      for="*"
+      class=".site_map.SiteMap"
+      permission="zope2.View"
+      />
+
 </configure>
