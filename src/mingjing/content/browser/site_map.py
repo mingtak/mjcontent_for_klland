@@ -24,4 +24,8 @@ class SiteMap(BrowserView):
     def __call__(self):
         request = self.request
 
+        if api.user.is_anonymous():
+            portal = api.portal.get()
+            return request.response.redirect(portal.absolute_url())
+
         return self.template()
