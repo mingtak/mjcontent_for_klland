@@ -18,6 +18,7 @@ from DateTime import DateTime
 import random
 from plone.directives import form
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
+from plone import api
 
 
 class INamedBlob(model.Schema):
@@ -26,13 +27,13 @@ class INamedBlob(model.Schema):
     model.fieldset(
         'Files',
         label=_(u"Files"),
-        fields=['file_1', 'file_2', 'file_3']
+        fields=['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
     )
 
     model.fieldset(
         'Images',
         label=_(u"Images"),
-        fields=['image_1', 'image_2', 'image_3']
+        fields=['image_1', 'desc_1', 'image_2', 'desc_2', 'image_3', 'desc_3', 'image_4', 'desc_4', 'image_5', 'desc_5']
     )
 
     file_1 = NamedBlobFile(
@@ -50,8 +51,23 @@ class INamedBlob(model.Schema):
         required=False,
     )
 
+    file_4 = NamedBlobFile(
+        title=_(u"File"),
+        required=False,
+    )
+
+    file_5 = NamedBlobFile(
+        title=_(u"File"),
+        required=False,
+    )
+
     image_1 = NamedBlobImage(
         title=_(u"Image"),
+        required=False,
+    )
+
+    desc_1 = schema.TextLine(
+        title=_(u"Image description"),
         required=False,
     )
 
@@ -60,8 +76,38 @@ class INamedBlob(model.Schema):
         required=False,
     )
 
+    desc_2 = schema.TextLine(
+        title=_(u"Image description"),
+        required=False,
+    )
+
     image_3 = NamedBlobImage(
         title=_(u"Image"),
+        required=False,
+    )
+
+    desc_3 = schema.TextLine(
+        title=_(u"Image description"),
+        required=False,
+    )
+
+    image_4 = NamedBlobImage(
+        title=_(u"Image"),
+        required=False,
+    )
+
+    desc_4 = schema.TextLine(
+        title=_(u"Image description"),
+        required=False,
+    )
+
+    image_5 = NamedBlobImage(
+        title=_(u"Image"),
+        required=False,
+    )
+
+    desc_5 = schema.TextLine(
+        title=_(u"Image description"),
         required=False,
     )
 
@@ -109,6 +155,7 @@ class IKlMeta(model.Schema):
 
     pubUnit = schema.TextLine(
         title=_(u"Publish Unit"),
+#        default=api.user.get_current().id,
         required=False,
     )
 
@@ -328,9 +375,18 @@ class NamedBlob(object):
     file_1 = context_property("file_1")
     file_2 = context_property("file_2")
     file_3 = context_property("file_3")
+    file_4 = context_property("file_4")
+    file_5 = context_property("file_5")
     image_1 = context_property("image_1")
     image_2 = context_property("image_2")
     image_3 = context_property("image_3")
+    image_4 = context_property("image_4")
+    image_5 = context_property("image_5")
+    desc_1 = context_property("desc_1")
+    desc_2 = context_property("desc_2")
+    desc_3 = context_property("desc_3")
+    desc_4 = context_property("desc_4")
+    desc_5 = context_property("desc_5")
 
 
 class NamedFromTimeStamp(object):
