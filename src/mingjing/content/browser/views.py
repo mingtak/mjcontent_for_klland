@@ -181,11 +181,11 @@ class CoverView(BrowserView):
         tabsBrain_1, tabsBrain_2 ,tabsBrain_3 = [], [], []
 
         # 最新消息
-        brain_news = api.content.find( context=portal['2']['1'], Type='Page', review_state='published',
+        brain_news = api.content.find( context=portal['news']['1'], Type='Page', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=5)[:5]
 
         # 法令新訊
-        brain_law = api.content.find( context=portal['3']['1'], Type='Page', review_state='published',
+        brain_law = api.content.find( context=portal['inquiry']['1'], Type='Page', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=5)[:5]
 
         # 線上查詢
@@ -197,15 +197,15 @@ class CoverView(BrowserView):
 #            sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
 
         # 不動產經紀 仲介專區
-        brain_broker = api.content.find( context=portal['6']['8'], Type='Page', review_state='published',
+        brain_broker = api.content.find( context=portal['business']['8'], Type='Page', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
 
         # 基隆市實價登錄專區
-        brain_realprice = api.content.find( context=portal['6']['6'], Type='Page', review_state='published',
+        brain_realprice = api.content.find( context=portal['business']['6'], Type='Page', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
 
         # 徵收案件專區
-        brain_buy = api.content.find( context=portal['6']['9'], Type='Page', review_state='published',
+        brain_buy = api.content.find( context=portal['business']['9'], Type='Page', review_state='published',
             sort_on='headWeight', sort_order='reverse', sort_limit=10)[:10]
 
         # 合併 brain
