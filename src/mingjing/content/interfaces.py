@@ -6,6 +6,7 @@ from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from z3c.relationfield.schema import RelationChoice, RelationList
+from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.app.vocabularies.catalog import CatalogSource
 #from plone.supermodel import model
 from plone.directives import form
@@ -79,5 +80,10 @@ class IRelatedLink(Interface):
 
     color = schema.TextLine(
         title=_(u"Background Color code"),
+        required=True,
+    )
+
+    textImage = NamedBlobImage(
+        title=_(u"Text Image, size: 180X25px"),
         required=True,
     )
