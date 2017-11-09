@@ -126,4 +126,10 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="get_hot"
+      for="*"
+      class=".views.GetHot"
+      permission="zope2.View"
+      />
 </configure>

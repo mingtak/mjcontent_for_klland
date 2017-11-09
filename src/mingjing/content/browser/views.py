@@ -18,6 +18,28 @@ logger = logging.getLogger('mingjing.content')
 LIMIT=20
 
 
+class GetHot(BrowserView):
+
+    def __call__(self):
+
+        db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
+
+        startDayStr = (DateTime()-30).strftime('%Y-%m-%d')
+
+        cursor = db.cursor()
+        statSql = "SELECT postTitle, url \
+                   FROM kl_counter \
+                   WHERE date > '%s' \
+                   ORDER BY count DESC LIMIT 5" % (startDayStr)
+        cursor.execute(statSql)
+        result = cursor.fetchall()
+
+#        import pdb; pdb.set_trace()
+
+        jsonStr = json.dumps(result)
+        return 'jsonStr(%s)' % jsonStr
+
+
 class Rank(BrowserView):
 
     template = ViewPageTemplateFile("template/rank.pt")
