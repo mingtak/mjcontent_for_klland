@@ -29,21 +29,25 @@ class SocialList(base.ViewletBase):
         portal = api.portal.get()
 
         # 順便統計
-        if context.Type() in ['Plone Site', 'Cover', 'Folder', 'Image', 'File']:
-            return
+#        if context.Type() in ['Plone Site', 'Cover', 'Folder', 'Image', 'File']:
+#            return
 
-        uid = context.UID()
+#        uid = context.UID()
+        url = request.form.get('url')
+        postTitle =request.form.get('title')
+#        import pdb; pdb.set_trace()
+        if not (url and postTitle):
+            return
         today = DateTime().strftime('%Y/%m/%d')
         db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
         cursor = db.cursor()
 
-        sqlStr = "UPDATE `kl_counter` SET `count` = count + 1 WHERE date = '%s' AND uid = '%s'" % (today, uid)
+        sqlStr = "UPDATE kl_counter SET count = count + 1 WHERE date = '%s' AND url = '%s' AND postTitle = '%s'" % (today, url, postTitle)
 
         if cursor.execute(sqlStr) == 0:
-            sqlStr = "INSERT INTO kl_counter(uid, date, count) VALUES ('%s', '%s', 1) \
-                 ON DUPLICATE KEY UPDATE count = count + 1;" % (uid, today)
+            sqlStr = "INSERT INTO kl_counter(url, postTitle, date, count) VALUES ('%s', '%s', '%s', 1) \
+                 ON DUPLICATE KEY UPDATE count = count + 1;" % (url, postTitle, today)
             cursor.execute(sqlStr)
-
         db.commit()
         db.close()
 

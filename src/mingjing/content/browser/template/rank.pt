@@ -46,10 +46,10 @@ portal = api.portal.get()
 
 <tr class="body" tal:repeat="item view/result">
   <td>${repeat/item/number}</td>
-  <td style="width:80%; padding:5px" tal:define="obj python:api.content.find(UID=item[0])[0]" tal:on-error="nothing">
-      <a href="${obj/getURL}">${obj/Title}</a>
+  <td style="width:80%; padding:5px" tal:on-error="nothing">
+      <a href="${python:item[0]}">${python:item[1]}</a>
   </td>
-  <td>${python:item[1]}</td>
+  <td>${python:item[2]}</td>
 </tr>
 
 

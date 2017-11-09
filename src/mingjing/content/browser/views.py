@@ -70,10 +70,15 @@ class Rank(BrowserView):
             self.end = todayStr
 
         cursor = db.cursor()
-        statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
+#        statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
+        statSql = "SELECT url, postTitle, count \
+                   FROM kl_counter \
+                   WHERE date BETWEEN '%s' AND '%s' \
+                   ORDER BY count DESC LIMIT 20" % (self.start, self.end)
         cursor.execute(statSql)
         self.result = cursor.fetchall()
-        self.result = self.statResult(self.result)
+#        import pdb;pdb.set_trace()
+#        self.result = self.statResult(self.result)
 
         db.close()
         return self.template()

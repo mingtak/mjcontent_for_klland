@@ -116,7 +116,7 @@
       name="rank"
       for="*"
       class=".views.Rank"
-      permission="cmf.ManagePortal"
+      permission="zope2.View"
       />
 
   <browser:page

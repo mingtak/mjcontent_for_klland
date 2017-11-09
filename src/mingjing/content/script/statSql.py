@@ -22,9 +22,9 @@ class StatSql:
         monthAgo = (date.today() - timedelta(30)).strftime('%Y/%m/%d')
 
         cursor = self.db.cursor()
-        statToday = "SELECT `uid`, `count` FROM `kl_counter` WHERE date >= '%s' ORDER BY `uid` LIMIT 20" % today
-        statWeek = "SELECT `uid`, `count` FROM `kl_counter` WHERE date >= '%s' ORDER BY `uid` LIMIT 20" % weekAgo
-        statMonth = "SELECT `uid`, `count` FROM `kl_counter` WHERE date >= '%s' ORDER BY `uid` LIMIT 20" % monthAgo
+        statToday = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % today
+        statWeek = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % weekAgo
+        statMonth = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % monthAgo
 
         cursor.execute(statToday)
         todayResult = cursor.fetchall()
@@ -42,18 +42,21 @@ class StatSql:
 
 
     def statResult(self, result, filename):
+        """
         rank = {}
         for item in result:
             if rank.has_key(item[0]):
                 rank[item[0]] += item[1]
             else:
                 rank[item[0]] = item[1]
+        """
 
-        sortedRank = sorted(rank.items(), key=operator.itemgetter(1))
-        sortedRank.reverse()
+#        sortedRank = sorted(rank.items(), key=operator.itemgetter(1))
+#        sortedRank.reverse()
 
         with open('/tmp/%s' % filename, 'w') as file:
-            pickle.dump(sortedRank, file)
+#            pickle.dump(sortedRank, file)
+            pickle.dump(result, file)
 
 
 instance = StatSql()
