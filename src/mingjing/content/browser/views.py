@@ -37,6 +37,8 @@ class GetHot(BrowserView):
 #        import pdb; pdb.set_trace()
 
         jsonStr = json.dumps(result)
+        self.request.RESPONSE.setHeader('Content-Type', 'application/json')
+        self.request.RESPONSE.setHeader('X-Content-Type-Options', '')
         return 'jsonStr(%s)' % jsonStr
 
 
