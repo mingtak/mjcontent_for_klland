@@ -4,7 +4,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone import api
 from DateTime import DateTime
 from datetime import datetime
+from Products.CMFPlone.utils import safe_unicode
 import MySQLdb
+import logging
+
+logger = logging.getLogger('mingjing.content')
 
 LIMIT = 10
 
@@ -27,22 +31,24 @@ class SocialList(base.ViewletBase):
         context = self.context
         request = self.request
         portal = api.portal.get()
+#統計
+        http_referer = request.get('HTTP_REFERER')
+        if not http_referer.startswith('http://land.klcg.gov.tw'):
+            return
 
-        # 順便統計
-#        if context.Type() in ['Plone Site', 'Cover', 'Folder', 'Image', 'File']:
-#            return
-
-#        uid = context.UID()
         url = request.form.get('url')
-        postTitle =request.form.get('title')
-#        import pdb; pdb.set_trace()
+        postTitle = request.form.get('title')
         if not (url and postTitle):
             return
+
         today = DateTime().strftime('%Y/%m/%d')
         db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
         cursor = db.cursor()
+#編碼
+        cursor.execute("SET NAMES utf8")
 
-        sqlStr = "UPDATE kl_counter SET count = count + 1 WHERE date = '%s' AND url = '%s' AND postTitle = '%s'" % (today, url, postTitle)
+
+        sqlStr = "UPDATE kl_counter SET count = count + 1 WHERE date = '%s' AND url = '%s'" % (today, url)
 
         if cursor.execute(sqlStr) == 0:
             sqlStr = "INSERT INTO kl_counter(url, postTitle, date, count) VALUES ('%s', '%s', '%s', 1) \

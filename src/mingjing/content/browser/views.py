@@ -27,6 +27,8 @@ class GetHot(BrowserView):
         startDayStr = (DateTime()-30).strftime('%Y-%m-%d')
 
         cursor = db.cursor()
+#編碼
+        cursor.execute("SET NAMES utf8")
         statSql = "SELECT postTitle, url \
                    FROM kl_counter \
                    WHERE date > '%s' \
@@ -36,6 +38,11 @@ class GetHot(BrowserView):
 
 #        import pdb; pdb.set_trace()
 
+        try:
+            pass
+#            logger.info(result)
+        except:
+            logger.info('result type: %s' % type(result))
         jsonStr = json.dumps(result)
         self.request.RESPONSE.setHeader('Content-Type', 'application/json')
         self.request.RESPONSE.setHeader('X-Content-Type-Options', '')
@@ -105,6 +112,10 @@ class Rank(BrowserView):
 #        self.result = self.statResult(self.result)
 
         db.close()
+#        self.request.RESPONSE.setHeader('Content-Type', 'text/html; charset=utf-8')
+#        self.request.RESPONSE.setHeader('X-Content-Type-Options', '')
+#        self.request.RESPONSE.setHeader('X-Frame-Options', 'ALLOW-FROM http://218.161.124.132/')
+
         return self.template()
 
 
