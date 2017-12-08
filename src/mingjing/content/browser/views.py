@@ -29,21 +29,25 @@ class GetHot(BrowserView):
         cursor = db.cursor()
 #編碼
         cursor.execute("SET NAMES utf8")
-        statSql = "SELECT postTitle, url \
+        statSql = "SELECT postTitle, url, sum(count) as count \
                    FROM kl_counter \
                    WHERE date > '%s' \
+                   GROUP BY postTitle, url \
                    ORDER BY count DESC LIMIT 5" % (startDayStr)
         cursor.execute(statSql)
         result = cursor.fetchall()
 
 #        import pdb; pdb.set_trace()
+        listResult = []
+        for item in result:
+            listResult.append(item[0:-1])
 
         try:
             pass
 #            logger.info(result)
         except:
-            logger.info('result type: %s' % type(result))
-        jsonStr = json.dumps(result)
+            logger.info('result type: %s' % type(listResult))
+        jsonStr = json.dumps(listResult)
         self.request.RESPONSE.setHeader('Content-Type', 'application/json')
         self.request.RESPONSE.setHeader('X-Content-Type-Options', '')
         return 'jsonStr(%s)' % jsonStr
@@ -104,20 +108,16 @@ class Rank(BrowserView):
 #編碼
         cursor.execute("SET NAMES utf8")
 
-#        statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
-        statSql = "SELECT url, postTitle, count \
+        statSql = "SELECT url, postTitle, sum(count) as count \
                    FROM kl_counter \
                    WHERE date BETWEEN '%s' AND '%s' \
+                   GROUP BY url, postTitle \
                    ORDER BY count DESC LIMIT 20" % (self.start, self.end)
+
         cursor.execute(statSql)
         self.result = cursor.fetchall()
-#        import pdb;pdb.set_trace()
-#        self.result = self.statResult(self.result)
 
         db.close()
-#        self.request.RESPONSE.setHeader('Content-Type', 'text/html; charset=utf-8')
-#        self.request.RESPONSE.setHeader('X-Content-Type-Options', '')
-#        self.request.RESPONSE.setHeader('X-Frame-Options', 'ALLOW-FROM http://218.161.124.132/')
 
         return self.template()
 

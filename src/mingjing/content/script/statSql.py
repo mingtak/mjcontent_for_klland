@@ -23,9 +23,23 @@ class StatSql:
 
         cursor = self.db.cursor()
         cursor.execute("SET NAMES utf8")
-        statToday = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % today
-        statWeek = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % weekAgo
-        statMonth = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % monthAgo
+        statToday = "SELECT url, postTitle, sum(count) as count \
+                     FROM `kl_counter` \
+                     WHERE date >= '%s' \
+                     GROUP BY url, postTitle \
+                     ORDER BY count DESC LIMIT 20" % today
+
+        statWeek = "SELECT url, postTitle, sum(count) as count \
+                    FROM `kl_counter` \
+                    WHERE date >= '%s' \
+                    GROUP BY url, postTitle \
+                    ORDER BY count DESC LIMIT 20" % weekAgo
+
+        statMonth = "SELECT url, postTitle, sum(count) as count \
+                     FROM `kl_counter` \
+                     WHERE date >= '%s' \
+                     GROUP BY url, postTitle \
+                     ORDER BY count DESC LIMIT 20" % monthAgo
 
         cursor.execute(statToday)
         todayResult = cursor.fetchall()
