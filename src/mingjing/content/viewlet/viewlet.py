@@ -31,8 +31,9 @@ class SocialList(base.ViewletBase):
         context = self.context
         request = self.request
         portal = api.portal.get()
+#        import pdb;pdb.set_trace()
 #統計
-        http_referer = request.get('HTTP_REFERER')
+        http_referer = request.get('HTTP_REFERER', '')
         if not http_referer.startswith('http://land.klcg.gov.tw'):
             return
 
@@ -50,6 +51,7 @@ class SocialList(base.ViewletBase):
 
         sqlStr = "UPDATE kl_counter SET count = count + 1 WHERE date = '%s' AND url = '%s'" % (today, url)
 
+#        import pdb;pdb.set_trace()
         if cursor.execute(sqlStr) == 0:
             sqlStr = "INSERT INTO kl_counter(url, postTitle, date, count) VALUES ('%s', '%s', '%s', 1) \
                  ON DUPLICATE KEY UPDATE count = count + 1;" % (url, postTitle, today)

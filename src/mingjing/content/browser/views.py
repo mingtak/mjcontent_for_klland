@@ -101,6 +101,9 @@ class Rank(BrowserView):
             self.end = todayStr
 
         cursor = db.cursor()
+#編碼
+        cursor.execute("SET NAMES utf8")
+
 #        statSql = "SELECT `uid`, `count` FROM `kl_counter` WHERE `date` BETWEEN '%s' AND '%s' ORDER BY `uid` LIMIT 20" % (self.start, self.end)
         statSql = "SELECT url, postTitle, count \
                    FROM kl_counter \

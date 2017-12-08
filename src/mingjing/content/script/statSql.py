@@ -22,6 +22,7 @@ class StatSql:
         monthAgo = (date.today() - timedelta(30)).strftime('%Y/%m/%d')
 
         cursor = self.db.cursor()
+        cursor.execute("SET NAMES utf8")
         statToday = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % today
         statWeek = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % weekAgo
         statMonth = "SELECT url, postTitle, count FROM `kl_counter` WHERE date >= '%s' ORDER BY count DESC LIMIT 20" % monthAgo
