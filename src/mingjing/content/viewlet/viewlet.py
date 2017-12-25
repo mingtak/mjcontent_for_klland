@@ -24,7 +24,6 @@ class ScriptToFooter(base.ViewletBase):
 class AboveContentInfo(base.ViewletBase):
     """  """
 
-
 class SocialList(base.ViewletBase):
     """  """
     def update(self):
@@ -39,9 +38,16 @@ class SocialList(base.ViewletBase):
 
         url = request.form.get('url')
         postTitle = request.form.get('title')
+
+#排除第一層
+        if len(http_referer.split('/')) <= 4:
+            return
+#必要時列舉排除
+
         if not (url and postTitle):
             return
 
+        logger.info(url)
         today = DateTime().strftime('%Y/%m/%d')
         db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
         cursor = db.cursor()
