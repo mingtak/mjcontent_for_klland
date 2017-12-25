@@ -85,7 +85,7 @@ class Rank(BrowserView):
         todayStr = DateTime().strftime('%Y-%m-%d')
 
         if range in ['Today', 'Week', 'Month'] and not request.form.has_key('start'):
-            self.result = self.loadFile('stat%s' % range)[:20]
+            self.result = self.loadFile('stat%s' % range) #[:20]
             self.end = todayStr
             if range == 'Today':
                 self.start = todayStr
@@ -112,7 +112,7 @@ class Rank(BrowserView):
                    FROM kl_counter \
                    WHERE date BETWEEN '%s' AND '%s' \
                    GROUP BY url, postTitle \
-                   ORDER BY count DESC LIMIT 20" % (self.start, self.end)
+                   ORDER BY count DESC" % (self.start, self.end)
 
         cursor.execute(statSql)
         self.result = cursor.fetchall()

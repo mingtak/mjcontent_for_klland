@@ -32,6 +32,13 @@ portal = api.portal.get()
 
 <h4 talcondition="python:hasattr(view, 'start')">查詢時間區間:${view/start}~${view/end}</h4>
 
+<div id="rank_table">
+<span class="first-page"> <a href="javascript:void(0)">第一頁</a> </span>
+<span class="prev-page"> <a href="javascript:void(0)"><</a> </span>
+ {{page}}
+<span class="next-page"> <a href="javascript:void(0)">></a> </span>
+<span class="last-page"> <a href="javascript:void(0)">最後一頁</a> </span>
+
 <table border='1'>
 <tr class="head">
   <td>序位</td>
@@ -39,16 +46,80 @@ portal = api.portal.get()
   <td>點閱數</td>
 </tr>
 
-<tr class="body" tal:repeat="item view/result">
+<tr tal:repeat="item view/result"
+    class="body page_${python:1 + (repeat['item'].index // 20)}"
+    id="item_${repeat/item/number}">
   <td>${repeat/item/number}</td>
   <td style="width:80%; padding:5px" tal:on-error="nothing">
       <a href="${python:item[0]}">${python:item[1]}</a>
   </td>
   <td>${python:item[2]}</td>
 </tr>
-
-
 </table>
+
+<span class="first-page"> <a href="javascript:void(0)">第一頁</a> </span>
+<span class="prev-page"> <a href="javascript:void(0)"><</a> </span>
+ {{page}} 
+<span class="next-page"> <a href="javascript:void(0)">></a> </span>
+<span class="last-page"> <a href="javascript:void(0)">最後一頁</a> </span>
+
+</div>
+
+
+<script type="text/javascript" src="http://land.klcg.gov.tw/Scripts/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://land.klcg.gov.tw/Scripts/vue.min.js"></script>
+<script>
+
+var vm = new Vue({
+  el: '#rank_table',
+  data: {
+    message: 'Hello Vue!',
+    page: 1
+  }
+})
+
+function showPage(){
+    $('tr.body').hide()
+    $('tr.page_' + vm.page).show()
+}
+
+$(document).ready(function(){
+    showPage()
+    $('span.first-page a').click(function(){
+        vm.page = 1
+        showPage()
+    })
+    $('span.last-page a').click(function(){
+        last_tr = $('table tr.body').last()
+        className = $(last_tr).attr('class')
+        vm.page = Number(className.split('_')[1])
+        showPage()
+    })
+    $('span.next-page a').click(function(){
+
+        last_tr = $('table tr.body').last()
+        className = $(last_tr).attr('class')
+        lastPage = Number(className.split('_')[1])
+        if(vm.page<lastPage){
+            vm.page += 1
+        }
+        showPage()
+    })
+    $('span.prev-page a').click(function(){
+        if(vm.page>1){
+            vm.page -= 1
+        }
+        showPage()
+    })
+
+})
+</script>
+
+<style>
+#rank_table table {margin: 10px 0}
+</style>
+
+
 
 
 </body>

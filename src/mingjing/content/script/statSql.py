@@ -27,19 +27,19 @@ class StatSql:
                      FROM `kl_counter` \
                      WHERE date >= '%s' \
                      GROUP BY url, postTitle \
-                     ORDER BY count DESC LIMIT 20" % today
+                     ORDER BY count DESC" % today
 
         statWeek = "SELECT url, postTitle, sum(count) as count \
                     FROM `kl_counter` \
                     WHERE date >= '%s' \
                     GROUP BY url, postTitle \
-                    ORDER BY count DESC LIMIT 20" % weekAgo
+                    ORDER BY count DESC" % weekAgo
 
         statMonth = "SELECT url, postTitle, sum(count) as count \
                      FROM `kl_counter` \
                      WHERE date >= '%s' \
                      GROUP BY url, postTitle \
-                     ORDER BY count DESC LIMIT 20" % monthAgo
+                     ORDER BY count DESC" % monthAgo
 
         cursor.execute(statToday)
         todayResult = cursor.fetchall()
