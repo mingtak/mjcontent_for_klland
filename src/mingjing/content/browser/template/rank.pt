@@ -117,6 +117,7 @@ $(document).ready(function(){
 
 <style>
 #rank_table table {margin: 10px 0}
+div#rank_table > span {margin: 0 15px}
 </style>
 
 
