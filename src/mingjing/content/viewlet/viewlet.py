@@ -34,9 +34,6 @@ class SocialList(base.ViewletBase):
 #統計
         http_referer = request.get('HTTP_REFERER', '')
 
-        logger.info('REFERER: %s' % http_referer)
-        logger.info('URL: %s' % request.form.get('url'))
-
         if not http_referer.startswith('http://land.klcg.gov.tw'):
             return
 
@@ -47,10 +44,14 @@ class SocialList(base.ViewletBase):
         if len(http_referer.split('/')) <= 4:
             return
 #必要時列舉排除
+        if 'pid=' in url or 'cid=' in url:
+            return
 
         if not (url and postTitle):
             return
 
+        logger.info('REFERER: %s' % http_referer)
+        logger.info('URL: %s' % request.form.get('url'))
 #        logger.info(url)
         today = DateTime().strftime('%Y/%m/%d')
         db = MySQLdb.connect(host='localhost', user='klland', passwd='klland', db='klland')
